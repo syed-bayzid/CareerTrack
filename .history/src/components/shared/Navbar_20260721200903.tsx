@@ -1,5 +1,4 @@
 import { Link } from 'react-router';
-import { Button } from '../ui/button';
 
 export default function Navbar() {
   // const { isAuthenticated, user, logout } = useAuth();
@@ -19,13 +18,12 @@ const user = {
         <div className="flex flex-wrap items-center gap-4 text-sm">
           {isAuthenticated ? (
             <>
-            <Button> <Link to="/dashboard" className="text-ink/80 hover:text-ink">
+              <Link to="/dashboard" className="text-ink/80 hover:text-ink">
                 Dashboard
-              </Link></Button>
-             
-              {/* <Link to="/applications" className="text-ink/80 hover:text-ink">
+              </Link>
+              <Link to="/applications" className="text-ink/80 hover:text-ink">
                 Applications
-              </Link> */}
+              </Link>
               <span className="hidden text-ink/50 sm:inline">Hi, {user?.name?.split(' ')[0]}</span>
               <button
                 type="button"

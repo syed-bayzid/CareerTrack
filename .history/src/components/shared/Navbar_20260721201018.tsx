@@ -19,10 +19,10 @@ const user = {
         <div className="flex flex-wrap items-center gap-4 text-sm">
           {isAuthenticated ? (
             <>
-            <Button> <Link to="/dashboard" className="text-ink/80 hover:text-ink">
+            <Button></Button>
+              <Link to="/dashboard" className="text-ink/80 hover:text-ink">
                 Dashboard
-              </Link></Button>
-             
+              </Link>
               {/* <Link to="/applications" className="text-ink/80 hover:text-ink">
                 Applications
               </Link> */}

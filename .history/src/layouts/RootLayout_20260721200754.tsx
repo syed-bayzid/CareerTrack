@@ -1,4 +1,3 @@
-import Footer from '@/components/shared/Footer'
 import Navbar from '@/components/shared/Navbar'
 import { Outlet } from 'react-router'
 
@@ -7,7 +6,7 @@ export default function RootLayout() {
         <div>
             <Navbar></Navbar>
             <Outlet></Outlet>
-            <Footer></Footer>
+            
         </div>
     )
 }
