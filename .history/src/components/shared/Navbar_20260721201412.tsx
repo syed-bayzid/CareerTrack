@@ -4,7 +4,7 @@ import { Button } from '../ui/button';
 export default function Navbar() {
   // const { isAuthenticated, user, logout } = useAuth();
 
-  const isAuthenticated = false;
+  const isAuthenticated = true;
 const user = {
   name: "Syed Bayzid",
   email: "syedbayzid@example.com",

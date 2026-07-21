@@ -4,7 +4,7 @@ import { Button } from '../ui/button';
 export default function Navbar() {
   // const { isAuthenticated, user, logout } = useAuth();
 
-  const isAuthenticated = false;
+  const isAuthenticated = true;
 const user = {
   name: "Syed Bayzid",
   email: "syedbayzid@example.com",
@@ -19,7 +19,7 @@ const user = {
         <div className="flex flex-wrap items-center gap-4 text-sm">
           {isAuthenticated ? (
             <>
-            <Button claad> <Link to="/dashboard" className="text-ink/80 hover:text-ink">
+            <Button cl> <Link to="/dashboard" className="text-ink/80 hover:text-ink">
                 Dashboard
               </Link></Button>
              
