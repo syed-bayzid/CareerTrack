@@ -54,7 +54,7 @@ export default function Navbar() {
               </span>
 
               <AlertDialog>
-                <AlertDialogTrigger asChild>
+                <AlertDialogTrigger >
                   <Button
                     variant="outline"
                     className="border-red-200 bg-white text-red-600 transition-all duration-300 hover:bg-red-600 hover:text-white hover:shadow-lg"
