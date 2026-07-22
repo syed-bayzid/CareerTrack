@@ -1,4 +1,5 @@
 import AuthLayout from "@/layouts/AuthLayout";
+import DashboardLayout from "@/layouts/DashboardLayout";
 import RootLayout from "@/layouts/RootLayout";
 import Login from "@/pages/Auth/Login";
 import Register from "@/pages/Auth/Register";
@@ -29,6 +30,13 @@ export const router = createBrowserRouter([
                 path: 'register', 
                 Component: Register
             }
+        ]
+    }, 
+    {
+        path: '/dashboard', 
+        Component: DashboardLayout, 
+        children: [
+            
         ]
     }
 ]);
