@@ -1,4 +1,5 @@
 import { Link } from "react-router";
+import useAuth from "@/hooks/useAuth";
 
 const stages = [
     "Saved",
@@ -10,6 +11,8 @@ const stages = [
 ];
 
 export default function Hero() {
+    const { user } = useAuth();
+
     return (
         <section className="mx-auto flex max-w-7xl flex-col items-center gap-16 px-6 py-20 lg:flex-row">
             {/* Left */}
@@ -29,19 +32,39 @@ export default function Hero() {
                 </p>
 
                 <div className="mt-10 flex flex-wrap gap-4">
-                    <Link
-                        to="/register"
-                        className="rounded-lg bg-slate-900 px-8 py-4 text-white hover:bg-slate-800"
-                    >
-                        Create your account
-                    </Link>
+                    {user ? (
+                        <>
+                            <Link
+                                to="/dashboard"
+                                className="rounded-lg bg-slate-900 px-8 py-4 text-white transition hover:bg-slate-800"
+                            >
+                                Go to Dashboard
+                            </Link>
 
-                    <Link
-                        to="/login"
-                        className="rounded-lg border px-8 py-4 hover:bg-gray-100"
-                    >
-                        I already have one
-                    </Link>
+                            <Link
+                                to="/applications"
+                                className="rounded-lg border px-8 py-4 transition hover:bg-gray-100"
+                            >
+                                My Applications
+                            </Link>
+                        </>
+                    ) : (
+                        <>
+                            <Link
+                                to="/register"
+                                className="rounded-lg bg-slate-900 px-8 py-4 text-white transition hover:bg-slate-800"
+                            >
+                                Create your account
+                            </Link>
+
+                            <Link
+                                to="/login"
+                                className="rounded-lg border px-8 py-4 transition hover:bg-gray-100"
+                            >
+                                I already have one
+                            </Link>
+                        </>
+                    )}
                 </div>
             </div>
 
