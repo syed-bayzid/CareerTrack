@@ -1,5 +1,8 @@
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
+import useAuth from "@/hooks/useAuth";
+import { useState } from "react";
 
 type LoginFormData = {
     email: string;
@@ -7,14 +10,28 @@ type LoginFormData = {
 };
 
 export default function Login() {
+    const { signIn } = useAuth();
+    const navigate = useNavigate();
+    const [isLoading, setIsLoading] = useState<boolean>(false);
     const {
         register,
         handleSubmit,
         formState: { errors },
     } = useForm<LoginFormData>();
 
-    const onSubmit = (data: LoginFormData) => {
-        console.log(data);
+    const onSubmit = async (data: LoginFormData) => {
+        setIsLoading(true);
+
+        try {
+            await signIn(data.email, data.password);
+
+            toast.success("Login successful!");
+            navigate("/");
+        } catch (error: any) {
+            toast.error(error.message);
+        } finally {
+            setIsLoading(false);
+        }
     };
 
     return (
@@ -100,11 +117,13 @@ export default function Login() {
                 {/* Submit Button */}
                 <button
                     type="submit"
-                    className="w-full rounded-md bg-black py-3 font-medium text-white transition hover:bg-gray-800"
+                    disabled={isLoading}
+                    className="w-full rounded-md bg-black py-3 font-medium text-white transition hover:bg-gray-800 disabled:cursor-not-allowed disabled:opacity-70"
                 >
-                    Log In
+                    {isLoading ? "Logging in..." : "Log In"}
                 </button>
             </form>
         </main>
+
     );
 }
