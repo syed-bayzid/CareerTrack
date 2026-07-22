@@ -1,5 +1,6 @@
 import { Link } from "react-router";
 import { useForm } from "react-hook-form";
+import useAuth from "@/hooks/useAuth";
 
 type RegisterFormData = {
     name: string;
@@ -15,9 +16,17 @@ export default function Register() {
         formState: { errors },
         watch,
     } = useForm<RegisterFormData>();
+    const { createUser } = useAuth();
+
 
     const onSubmit = (data: RegisterFormData) => {
-        console.log(data);
+        createUser(data.email, data.password)
+            .then(res => {
+                console.log(res.user);
+            })
+            .catch(err => {
+                console.error(err);
+            })
     };
 
     return (
